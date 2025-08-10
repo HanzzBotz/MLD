@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malin Kundang Adventure</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 10px;
+            padding: 0;
+            overflow: hidden;
+        }
+        #game {
+            background-color: lightskyblue;
+        }
+        #isi {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <div id="isi">
+        <canvas id="game"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById("game")
+        canvas.width = 500;
+        canvas.height = 500;
+        const g = canvas.getContext('2d')
+        const scale = 20;
+        let mc = {x: 250, y: 270}
+        let arah = "kanan";
+        function draw() {
+            const color = ["green", "red", "yellow", "purple"]
+            
+            g.fillStyle = "green"
+            g.fillRect(0, 300, window.innerWidth, window.innerHeight)
+            g.fillStyle = "rgb(58, 16, 2)"
+            g.fillRect(0, 320, window.innerWidth, window.innerHeight)
+            g.fillStyle = "rgb(71, 71, 71)"
+            g.fillRect(mc.x, mc.y, 20, 30 )
+            g.beginPath();
+            g.arc(mc.x + 10, mc.y + 2, 10, 0, 2 * Math.PI);
+            g.fill();
+            if (arah === "kanan") {
+                g.beginPath();
+                g.fillStyle = "white"
+                g.arc(mc.x + 15, mc.y + 5, 2, 0, 2 * Math.PI);
+                g.fill();
+            } else if(arah === "kiri") {
+                g.beginPath();
+                g.fillStyle = "white"
+                g.arc(mc.x + 5, mc.y + 5, 2, 0, 2 * Math.PI);
+                g.fill();
+            }
+        }
+        document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "ArrowRight":
+                    mc.x += 10
+                    arah = "kanan"
+                    g.clearRect(mc.x - 15, mc.y - 10, 25, 40)
+                    draw()
+                    break;
+                case "ArrowLeft":
+                    arah = "kiri"
+                    mc.x -= 10
+                    g.clearRect(mc.x + 15, mc.y - 10, 25, 40)
+                    draw()
+                    break;
+                case " ": 
+                    g.fillStyle = "white"
+                    g.fillRect(mc.x + 20, mc.y + 18, 10, 2)
+                    break;
+            }
+        })
+        function loop() {
+            setTimeout(loop, 100)
+        }
+        draw()
+    </script>
+</body>
+</html>
