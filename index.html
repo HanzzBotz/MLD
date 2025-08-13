@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: azure;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #menu button {
+            margin-bottom: 10px;
+        }
+
+        #bplay {
+            margin-bottom: 10px;
+        }
+
+        #play {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #play button {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: antiquewhite;
+            border-color: aqua;
+            border-radius: 10px;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            font-size: 50px Serif;
+        }
+
+        button:hover {
+            cursor: pointer;
+            box-shadow: 0 0 10px aqua;
+            text-shadow: 0 0 10px white;
+            
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 150px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malin Kundang Adventure</title>
+</head>
+
+<body>
+    <h1>Malin Kundang Adventure</h1>
+    <div id="container">
+        <div id="menu"><button id="bplay">Play</button></div>
+    </div>
+    <!-- #NO AI -->
+    <script>
+        const menu = document.getElementById("menu")
+        const play = document.createElement("div")
+        play.id = "play"
+        menu.appendChild(play)
+        const btnplay = document.getElementById("bplay")
+        bplay.addEventListener("click", () => {
+            if (!document.querySelector("#play").querySelector("button")) {
+                for (let i = 0; i < 2; i++) {
+                    const btn = document.createElement("button")
+                    btn.textContent = i == 1 ? "Load Game" : "New Game"
+                    btn.addEventListener("click", () => {
+                        window.location.href = "WORLD/world.html"
+                    })
+                    play.appendChild(btn)
+                }
+            }
+        })
+        for (let i = 0; i < 2; i++) {
+            const btnn = document.createElement("button")
+            btnn.textContent = i == 0 ? "Settings" : "Quit"
+            btnn.addEventListener("click", () => {
+
+            })
+            menu.appendChild(btnn)
+        }
+    </script>
+</body>
+
+</html>
